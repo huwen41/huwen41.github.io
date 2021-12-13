@@ -1825,7 +1825,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #5d9eff;
+  background: #d06004;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2994,7 +2994,7 @@ pre .javascript .function {
   }
 }
 body {
-  background: url("/uploads/");
+  background: url("/uploads/red.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: absolute;
@@ -3002,4 +3002,16 @@ body {
   background-height: 100%;
   background-size: cover;
   background-opacity: 0.2;
+}
+.content-wrap {
+  opacity: 0.9;
+}
+.sidebar {
+  opacity: 0.9;
+}
+.header-inner {
+  background: rgba(255,255,255,0.9);
+}
+.popup {
+  opacity: 0.9;
 }
