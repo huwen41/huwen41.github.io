@@ -5,7 +5,11 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="图的bfs与dfs, huwensen">
-    <meta name="description" content="代码如下12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626">
+    <meta name="description" content="代码如下#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;string.h&amp;gt;
+#include &amp;lt;algorithm&amp;gt;
+#define MVNu">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -47,7 +51,7 @@
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/medias/logo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">huwensen</span>
                 </a>
@@ -146,7 +150,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/medias/logo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">huwensen</div>
         <div class="logo-desc">
@@ -496,7 +500,257 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MVNum 100					   <span class="comment">//最大顶点数 </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">//边结点</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> adjvex;                       <span class="comment">//顶点的下标</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span> *<span class="title">nextarc</span>;</span>          <span class="comment">//指向下一条边的指针</span></span><br><span class="line">&#125; ArcNode, *Arc;</span><br><span class="line"></span><br><span class="line"><span class="comment">//顶点信息</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">VNode</span> &#123;</span></span><br><span class="line">	<span class="keyword">char</span> data;</span><br><span class="line">	ArcNode *firsttarc;              <span class="comment">//指向第一条依附该顶点的边的指针</span></span><br><span class="line">&#125; VNode, AdjList[MVNum];            <span class="comment">//AdjList表示邻接表类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//邻接表</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ALGraph</span> &#123;</span></span><br><span class="line">	AdjList vertices;</span><br><span class="line">	<span class="keyword">int</span> vexnum, arcnum;             <span class="comment">//总顶点数和总边数</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//顶点v在G.verti00ces中的序号i</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LocateVex</span><span class="params">(ALGraph G, <span class="keyword">char</span> v)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.vexnum; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (v == G.vertices[i].data)</span><br><span class="line">			<span class="keyword">return</span> i;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建有向图 G(邻接表)</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateUDG</span><span class="params">(ALGraph &amp;G)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;请输入总顶点数：&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;G.vexnum);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;请输入总边数：&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;G.arcnum);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> m = <span class="number">0</span>; m &lt; G.vexnum; m++) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;请输入第%d个顶点：&quot;</span>, m + <span class="number">1</span>);</span><br><span class="line">		cin &gt;&gt; G.vertices[m].data;</span><br><span class="line">		G.vertices[m].firsttarc = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; G.arcnum; k++) &#123;</span><br><span class="line">		<span class="keyword">char</span> v1, v2;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;\n请输入第%d条边的起点：&quot;</span>, k + <span class="number">1</span>);</span><br><span class="line">		cin &gt;&gt; v1;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;请输入第%d条边的终点：&quot;</span>, k + <span class="number">1</span>);</span><br><span class="line">		cin &gt;&gt; v2;</span><br><span class="line">		<span class="keyword">int</span> i, j;</span><br><span class="line">		i = <span class="built_in">LocateVex</span>(G, v1);</span><br><span class="line">		j = <span class="built_in">LocateVex</span>(G, v2);</span><br><span class="line">		Arc p1 = <span class="keyword">new</span> ArcNode;                  <span class="comment">//生成一个新的边结点p1</span></span><br><span class="line">		p1-&gt;adjvex = j;                        <span class="comment">//邻接点序号为j</span></span><br><span class="line">		p1-&gt;nextarc = G.vertices[i].firsttarc;</span><br><span class="line">		G.vertices[i].firsttarc = p1;          <span class="comment">//将新结点*p1插入顶点v1的边表头部</span></span><br><span class="line"><span class="comment">//		Arc p2=new ArcNode;                    //生成一个新的边结点p2</span></span><br><span class="line"><span class="comment">//		p2-&gt;adjvex=i;                          //邻接点序号为i</span></span><br><span class="line"><span class="comment">//		p2-&gt;nextarc=G.vertices[j].firsttarc;</span></span><br><span class="line"><span class="comment">//		G.vertices[j].firsttarc=p2;            //将新结点*p2插入顶点v2的边表头部</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//访问标志</span></span><br><span class="line"><span class="keyword">bool</span> visited[MVNum] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//深度优先遍历 (邻接表)</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS_AL</span><span class="params">(ALGraph G, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%c &quot;</span>, G.vertices[v].data);</span><br><span class="line">	visited[v] = <span class="number">1</span>;                     <span class="comment">//访问第v个标志，并将访问标志设置为1</span></span><br><span class="line">	Arc p = <span class="keyword">new</span> ArcNode;</span><br><span class="line">	p = G.vertices[v].firsttarc;        <span class="comment">//p指向v的边链表的第一个边结点</span></span><br><span class="line">	<span class="keyword">while</span> (p != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">int</span> w = p-&gt;adjvex;             <span class="comment">//w是v的邻接点</span></span><br><span class="line">		<span class="keyword">if</span> (!visited[w])</span><br><span class="line">			<span class="built_in">DFS_AL</span>(G, w);              <span class="comment">//如果w为访问，递归调用</span></span><br><span class="line">		p = p-&gt;nextarc;                <span class="comment">//p指向下一个边结点</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXQSIZE 100</span></span><br><span class="line"><span class="comment">//循环队列的存储</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> *base;</span><br><span class="line">	<span class="keyword">int</span> front;      <span class="comment">//头指针</span></span><br><span class="line">	<span class="keyword">int</span> rear;       <span class="comment">//尾指针</span></span><br><span class="line">&#125; SqQueue;</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">InitQueue</span><span class="params">(SqQueue &amp;Q)</span> </span>&#123;</span><br><span class="line">	Q.base = <span class="keyword">new</span> <span class="keyword">int</span>[MAXQSIZE];</span><br><span class="line">	<span class="keyword">if</span> (!Q.base)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	Q.front = Q.rear = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//判空(空为1)</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">QueueEmpty</span><span class="params">(SqQueue Q)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (Q.front == Q.rear)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//入队</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">EnQueue</span><span class="params">(SqQueue &amp;Q, <span class="keyword">int</span> e)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> ((Q.rear + <span class="number">1</span>) % MAXQSIZE == Q.front)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	Q.base[Q.rear] = e;</span><br><span class="line">	Q.rear = (Q.rear + <span class="number">1</span>) % MAXQSIZE;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//出队</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">DeQueue</span><span class="params">(SqQueue &amp;Q, <span class="keyword">int</span> e)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (Q.front == Q.rear)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	e = Q.base[Q.front];</span><br><span class="line">	Q.front = (Q.front + <span class="number">1</span>) % MAXQSIZE;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//取队头元素</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetHead</span><span class="params">(SqQueue Q)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (Q.front != Q.rear)</span><br><span class="line">		<span class="keyword">return</span> Q.base[Q.front];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//访问标志</span></span><br><span class="line"><span class="keyword">bool</span> visited1[MVNum] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//返回u的第一个邻接点下标</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">FirstAdjVex</span><span class="params">(ALGraph G, <span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	ArcNode *p = G.vertices[u].firsttarc;</span><br><span class="line">	<span class="keyword">if</span> (p)</span><br><span class="line">		<span class="keyword">return</span> p-&gt;adjvex;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//返回顶点u的相对于w的下一个邻接点序号</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">NextAdjVex</span><span class="params">(ALGraph G, <span class="keyword">int</span> u, <span class="keyword">int</span> w)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	ArcNode *p = G.vertices[u].firsttarc;</span><br><span class="line">	<span class="keyword">while</span> (p) &#123;</span><br><span class="line">		<span class="keyword">if</span> (p-&gt;adjvex == w)</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		p = p-&gt;nextarc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (p-&gt;adjvex != w || !p-&gt;nextarc)       <span class="comment">//如果没找到w或者w是最后一个邻接点</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">return</span> p-&gt;nextarc-&gt;adjvex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//广度优先遍历 (邻接表)</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFS_AL</span><span class="params">(ALGraph G, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%c &quot;</span>, G.vertices[v].data);</span><br><span class="line">	visited1[v] = <span class="number">1</span>;</span><br><span class="line">	SqQueue Q;</span><br><span class="line">	<span class="built_in">InitQueue</span>(Q);</span><br><span class="line">	<span class="built_in">EnQueue</span>(Q, v);</span><br><span class="line">	<span class="keyword">while</span> (!<span class="built_in">QueueEmpty</span>(Q)) &#123;</span><br><span class="line">		<span class="keyword">int</span> u = <span class="built_in">GetHead</span>(Q);</span><br><span class="line">		<span class="built_in">DeQueue</span>(Q, u);</span><br><span class="line">		<span class="keyword">int</span> w;</span><br><span class="line">		<span class="keyword">for</span> (w = <span class="built_in">FirstAdjVex</span>(G, u); w &gt;= <span class="number">0</span>; w = <span class="built_in">NextAdjVex</span>(G, u, w)) &#123;</span><br><span class="line">			<span class="keyword">if</span> (!visited1[w]) &#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">&quot;%c &quot;</span>, G.vertices[w].data);</span><br><span class="line">				visited1[w] = <span class="number">1</span>;</span><br><span class="line">				<span class="built_in">EnQueue</span>(Q, w);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//链栈的存储</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">StackNode</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">StackNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125; StackNode, *linkStack;</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InitLinkStack</span><span class="params">(linkStack &amp;S)</span> </span>&#123;</span><br><span class="line">	S = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//判空(空为1)</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isEmpty</span><span class="params">(linkStack &amp;S)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (S == <span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//入栈</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Push</span><span class="params">(linkStack &amp;S, <span class="keyword">int</span> e)</span> </span>&#123;</span><br><span class="line">	linkStack p = <span class="keyword">new</span> StackNode[<span class="number">1</span>];</span><br><span class="line">	p-&gt;data = e;</span><br><span class="line">	p-&gt;next = S;</span><br><span class="line">	S = p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//出栈</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Pop</span><span class="params">(linkStack &amp;S, <span class="keyword">int</span> &amp;e)</span> </span>&#123;</span><br><span class="line">	linkStack p;</span><br><span class="line">	e = S-&gt;data;</span><br><span class="line">	p = S;</span><br><span class="line">	S = S-&gt;next;</span><br><span class="line">	<span class="keyword">delete</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//取栈顶元素</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetTop</span><span class="params">(linkStack &amp;S)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> S-&gt;data ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//求每个结点的入度并存入数组indegree 中</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FindinDegree</span><span class="params">(ALGraph G, <span class="keyword">int</span> indegree[])</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.vexnum; i++)</span><br><span class="line">		indegree[i] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; G.vexnum; j++) &#123;</span><br><span class="line">		ArcNode *p = G.vertices[j].firsttarc;</span><br><span class="line">		<span class="keyword">while</span> (p) &#123;</span><br><span class="line">			indegree[p-&gt;adjvex]++;</span><br><span class="line">			p = p-&gt;nextarc;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ALGraph G;</span><br><span class="line">	<span class="built_in">CreateUDG</span>(G);</span><br><span class="line">	<span class="keyword">char</span> s;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n请输入遍历的起点：&quot;</span>);</span><br><span class="line">	cin &gt;&gt; s;</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.vexnum; i++)</span><br><span class="line">		<span class="keyword">if</span> (s == G.vertices[i].data)</span><br><span class="line">			t = i;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n深度优先遍历：&quot;</span>);</span><br><span class="line">	<span class="built_in">DFS_AL</span>(G, t);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n广度优先遍历：&quot;</span>);</span><br><span class="line">	<span class="built_in">BFS_AL</span>(G, t);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                <h4 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;stdio.h&gt;
+#include &lt;iostream&gt;
+#include &lt;string.h&gt;
+#include &lt;algorithm&gt;
+#define MVNum 100					   &#x2F;&#x2F;最大顶点数 
+using namespace std;
+
+&#x2F;&#x2F;边结点
+typedef struct ArcNode &#123;
+	int adjvex;                       &#x2F;&#x2F;顶点的下标
+	struct ArcNode *nextarc;          &#x2F;&#x2F;指向下一条边的指针
+&#125; ArcNode, *Arc;
+
+&#x2F;&#x2F;顶点信息
+typedef struct VNode &#123;
+	char data;
+	ArcNode *firsttarc;              &#x2F;&#x2F;指向第一条依附该顶点的边的指针
+&#125; VNode, AdjList[MVNum];            &#x2F;&#x2F;AdjList表示邻接表类型
+
+&#x2F;&#x2F;邻接表
+struct ALGraph &#123;
+	AdjList vertices;
+	int vexnum, arcnum;             &#x2F;&#x2F;总顶点数和总边数
+&#125;;
+
+&#x2F;&#x2F;顶点v在G.verti00ces中的序号i
+int LocateVex(ALGraph G, char v) &#123;
+	for (int i &#x3D; 0; i &lt; G.vexnum; i++) &#123;
+		if (v &#x3D;&#x3D; G.vertices[i].data)
+			return i;
+	&#125;
+&#125;
+
+&#x2F;&#x2F;创建有向图 G(邻接表)
+void CreateUDG(ALGraph &amp;G) &#123;
+	printf(&quot;请输入总顶点数：&quot;);
+	scanf(&quot;%d&quot;, &amp;G.vexnum);
+	printf(&quot;请输入总边数：&quot;);
+	scanf(&quot;%d&quot;, &amp;G.arcnum);
+	printf(&quot;\n&quot;);
+	for (int m &#x3D; 0; m &lt; G.vexnum; m++) &#123;
+		printf(&quot;请输入第%d个顶点：&quot;, m + 1);
+		cin &gt;&gt; G.vertices[m].data;
+		G.vertices[m].firsttarc &#x3D; 0;
+	&#125;
+	for (int k &#x3D; 0; k &lt; G.arcnum; k++) &#123;
+		char v1, v2;
+		printf(&quot;\n请输入第%d条边的起点：&quot;, k + 1);
+		cin &gt;&gt; v1;
+		printf(&quot;请输入第%d条边的终点：&quot;, k + 1);
+		cin &gt;&gt; v2;
+		int i, j;
+		i &#x3D; LocateVex(G, v1);
+		j &#x3D; LocateVex(G, v2);
+		Arc p1 &#x3D; new ArcNode;                  &#x2F;&#x2F;生成一个新的边结点p1
+		p1-&gt;adjvex &#x3D; j;                        &#x2F;&#x2F;邻接点序号为j
+		p1-&gt;nextarc &#x3D; G.vertices[i].firsttarc;
+		G.vertices[i].firsttarc &#x3D; p1;          &#x2F;&#x2F;将新结点*p1插入顶点v1的边表头部
+&#x2F;&#x2F;		Arc p2&#x3D;new ArcNode;                    &#x2F;&#x2F;生成一个新的边结点p2
+&#x2F;&#x2F;		p2-&gt;adjvex&#x3D;i;                          &#x2F;&#x2F;邻接点序号为i
+&#x2F;&#x2F;		p2-&gt;nextarc&#x3D;G.vertices[j].firsttarc;
+&#x2F;&#x2F;		G.vertices[j].firsttarc&#x3D;p2;            &#x2F;&#x2F;将新结点*p2插入顶点v2的边表头部
+	&#125;
+&#125;
+
+&#x2F;&#x2F;访问标志
+bool visited[MVNum] &#x3D; &#123;0&#125;;
+
+&#x2F;&#x2F;深度优先遍历 (邻接表)
+void DFS_AL(ALGraph G, int v) &#123;
+	printf(&quot;%c &quot;, G.vertices[v].data);
+	visited[v] &#x3D; 1;                     &#x2F;&#x2F;访问第v个标志，并将访问标志设置为1
+	Arc p &#x3D; new ArcNode;
+	p &#x3D; G.vertices[v].firsttarc;        &#x2F;&#x2F;p指向v的边链表的第一个边结点
+	while (p !&#x3D; 0) &#123;
+		int w &#x3D; p-&gt;adjvex;             &#x2F;&#x2F;w是v的邻接点
+		if (!visited[w])
+			DFS_AL(G, w);              &#x2F;&#x2F;如果w为访问，递归调用
+		p &#x3D; p-&gt;nextarc;                &#x2F;&#x2F;p指向下一个边结点
+	&#125;
+&#125;
+
+#define MAXQSIZE 100
+&#x2F;&#x2F;循环队列的存储
+typedef struct &#123;
+	int *base;
+	int front;      &#x2F;&#x2F;头指针
+	int rear;       &#x2F;&#x2F;尾指针
+&#125; SqQueue;
+
+&#x2F;&#x2F;初始化
+int InitQueue(SqQueue &amp;Q) &#123;
+	Q.base &#x3D; new int[MAXQSIZE];
+	if (!Q.base)
+		return 0;
+	Q.front &#x3D; Q.rear &#x3D; 0;
+	return 1;
+&#125;
+
+&#x2F;&#x2F;判空(空为1)
+int QueueEmpty(SqQueue Q) &#123;
+	if (Q.front &#x3D;&#x3D; Q.rear)
+		return 1;
+	return 0;
+&#125;
+
+&#x2F;&#x2F;入队
+int EnQueue(SqQueue &amp;Q, int e) &#123;
+	if ((Q.rear + 1) % MAXQSIZE &#x3D;&#x3D; Q.front)
+		return 0;
+	Q.base[Q.rear] &#x3D; e;
+	Q.rear &#x3D; (Q.rear + 1) % MAXQSIZE;
+	return 1;
+&#125;
+
+&#x2F;&#x2F;出队
+int DeQueue(SqQueue &amp;Q, int e) &#123;
+	if (Q.front &#x3D;&#x3D; Q.rear)
+		return 0;
+	e &#x3D; Q.base[Q.front];
+	Q.front &#x3D; (Q.front + 1) % MAXQSIZE;
+	return 1;
+&#125;
+
+&#x2F;&#x2F;取队头元素
+int GetHead(SqQueue Q) &#123;
+	if (Q.front !&#x3D; Q.rear)
+		return Q.base[Q.front];
+&#125;
+
+&#x2F;&#x2F;访问标志
+bool visited1[MVNum] &#x3D; &#123;0&#125;;
+
+&#x2F;&#x2F;返回u的第一个邻接点下标
+int FirstAdjVex(ALGraph G, int u) &#123;
+
+	ArcNode *p &#x3D; G.vertices[u].firsttarc;
+	if (p)
+		return p-&gt;adjvex;
+	else
+		return -1;
+&#125;
+
+&#x2F;&#x2F;返回顶点u的相对于w的下一个邻接点序号
+int NextAdjVex(ALGraph G, int u, int w) &#123;
+
+	ArcNode *p &#x3D; G.vertices[u].firsttarc;
+	while (p) &#123;
+		if (p-&gt;adjvex &#x3D;&#x3D; w)
+			break;
+		p &#x3D; p-&gt;nextarc;
+	&#125;
+	if (p-&gt;adjvex !&#x3D; w || !p-&gt;nextarc)       &#x2F;&#x2F;如果没找到w或者w是最后一个邻接点
+		return -1;
+	return p-&gt;nextarc-&gt;adjvex;
+&#125;
+
+&#x2F;&#x2F;广度优先遍历 (邻接表)
+void BFS_AL(ALGraph G, int v) &#123;
+	printf(&quot;%c &quot;, G.vertices[v].data);
+	visited1[v] &#x3D; 1;
+	SqQueue Q;
+	InitQueue(Q);
+	EnQueue(Q, v);
+	while (!QueueEmpty(Q)) &#123;
+		int u &#x3D; GetHead(Q);
+		DeQueue(Q, u);
+		int w;
+		for (w &#x3D; FirstAdjVex(G, u); w &gt;&#x3D; 0; w &#x3D; NextAdjVex(G, u, w)) &#123;
+			if (!visited1[w]) &#123;
+				printf(&quot;%c &quot;, G.vertices[w].data);
+				visited1[w] &#x3D; 1;
+				EnQueue(Q, w);
+			&#125;
+		&#125;
+	&#125;
+&#125;
+
+
+
+&#x2F;&#x2F;链栈的存储
+typedef struct StackNode &#123;
+	int data;
+	struct StackNode *next;
+&#125; StackNode, *linkStack;
+
+&#x2F;&#x2F;初始化
+void InitLinkStack(linkStack &amp;S) &#123;
+	S &#x3D; 0;
+&#125;
+
+&#x2F;&#x2F;判空(空为1)
+int isEmpty(linkStack &amp;S) &#123;
+	if (S &#x3D;&#x3D; 0)
+		return 1;
+	else
+		return 0;
+&#125;
+
+&#x2F;&#x2F;入栈
+void Push(linkStack &amp;S, int e) &#123;
+	linkStack p &#x3D; new StackNode[1];
+	p-&gt;data &#x3D; e;
+	p-&gt;next &#x3D; S;
+	S &#x3D; p;
+&#125;
+
+&#x2F;&#x2F;出栈
+void Pop(linkStack &amp;S, int &amp;e) &#123;
+	linkStack p;
+	e &#x3D; S-&gt;data;
+	p &#x3D; S;
+	S &#x3D; S-&gt;next;
+	delete p;
+&#125;
+
+&#x2F;&#x2F;取栈顶元素
+int GetTop(linkStack &amp;S) &#123;
+	return S-&gt;data ;
+&#125;
+
+&#x2F;&#x2F;求每个结点的入度并存入数组indegree 中
+void FindinDegree(ALGraph G, int indegree[]) &#123;
+	for (int i &#x3D; 0; i &lt; G.vexnum; i++)
+		indegree[i] &#x3D; 0;
+	for (int j &#x3D; 0; j &lt; G.vexnum; j++) &#123;
+		ArcNode *p &#x3D; G.vertices[j].firsttarc;
+		while (p) &#123;
+			indegree[p-&gt;adjvex]++;
+			p &#x3D; p-&gt;nextarc;
+		&#125;
+	&#125;
+&#125;
+
+int main() &#123;
+	ALGraph G;
+	CreateUDG(G);
+	char s;
+	printf(&quot;\n请输入遍历的起点：&quot;);
+	cin &gt;&gt; s;
+	int t;
+	for (int i &#x3D; 0; i &lt; G.vexnum; i++)
+		if (s &#x3D;&#x3D; G.vertices[i].data)
+			t &#x3D; i;
+	printf(&quot;\n深度优先遍历：&quot;);
+	DFS_AL(G, t);
+	printf(&quot;\n广度优先遍历：&quot;);
+	BFS_AL(G, t);
+	return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
                 
@@ -705,10 +959,10 @@
                         <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
                     </ul>
                     <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
                     </div>
                     <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
                     </div>
                 </div>
             </div>
@@ -758,7 +1012,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="图的bfs与dfs">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/medias/featureimages/4.jpg" class="responsive-img" alt="图的bfs与dfs">
                         
                         <span class="card-title">图的bfs与dfs</span>
                     </div>
@@ -820,7 +1074,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="二叉树">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/medias/featureimages/20.jpg" class="responsive-img" alt="二叉树">
                         
                         <span class="card-title">二叉树</span>
                     </div>
@@ -1375,6 +1629,12 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+<script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
 
 </html>

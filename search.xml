@@ -1,50 +1,259 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2021/11/19/hello-world/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>二叉树</title>
-    <url>/2021/11/22/%E4%BA%8C%E5%8F%89%E6%A0%91/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="通过递归方法实现以先序创建树"><a href="#通过递归方法实现以先序创建树" class="headerlink" title="通过递归方法实现以先序创建树"></a>通过递归方法实现以先序创建树</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">BiTree <span class="title">CreatBiTree</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	BiTree T;</span><br><span class="line">	<span class="keyword">char</span> c;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%c&quot;</span>, &amp;c);</span><br><span class="line">	<span class="keyword">if</span> (c == <span class="string">&#x27;#&#x27;</span>) &#123;</span><br><span class="line">		T = <span class="literal">NULL</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		T = (BiTree)<span class="built_in">malloc</span>(<span class="built_in"><span class="keyword">sizeof</span></span>(BiTNode));</span><br><span class="line">		T-&gt;data = c;</span><br><span class="line">		T-&gt;lchild = <span class="built_in">CreatBiTree</span>();</span><br><span class="line">		T-&gt;rchild = <span class="built_in">CreatBiTree</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> T;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<img src="/2021/11/22/%E4%BA%8C%E5%8F%89%E6%A0%91/xian.png" class title="This is an example image">
-
-<h4 id="先序遍历"><a href="#先序遍历" class="headerlink" title="先序遍历"></a>先序遍历</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreOrderTraverse</span><span class="params">(BiTree T)</span> </span>&#123; <span class="comment">//递归</span></span><br><span class="line">	<span class="keyword">if</span> (T) &#123;</span><br><span class="line">		<span class="built_in">visit</span>(T-&gt;data);</span><br><span class="line">		<span class="built_in">PreOrderTraverse</span>(T-&gt;lchild);</span><br><span class="line">		<span class="built_in">PreOrderTraverse</span>(T-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">IreOrderTraverse</span><span class="params">(BiTree T)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (T) &#123;</span><br><span class="line">		<span class="built_in">IreOrderTraverse</span>(T-&gt;lchild);</span><br><span class="line">		<span class="built_in">visit</span>(T-&gt;data);</span><br><span class="line">		<span class="built_in">IreOrderTraverse</span>(T-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src="/2021/11/22/%E4%BA%8C%E5%8F%89%E6%A0%91/huo.png" class title="This is an example image">
-
-<h4 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LastreOrderTraverse</span><span class="params">(BiTree T)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (T) &#123;</span><br><span class="line">		<span class="built_in">LastreOrderTraverse</span>(T-&gt;lchild);</span><br><span class="line">		<span class="built_in">LastreOrderTraverse</span>(T-&gt;rchild);</span><br><span class="line">		<span class="built_in">visit</span>(T-&gt;data);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="层次遍历"><a href="#层次遍历" class="headerlink" title="层次遍历"></a>层次遍历</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">load</span><span class="params">(BiTree T)</span> </span>&#123;</span><br><span class="line">	queue&lt;BiTree&gt;q;</span><br><span class="line">	<span class="keyword">if</span> (T)</span><br><span class="line">		q.<span class="built_in">push</span>(T);</span><br><span class="line">	<span class="keyword">while</span> (!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">		cout &lt;&lt; q.<span class="built_in">front</span>()-&gt;data &lt;&lt; endl;</span><br><span class="line">		<span class="keyword">if</span> (q.<span class="built_in">front</span>()-&gt;lchild)</span><br><span class="line">			q.<span class="built_in">push</span>(q.<span class="built_in">front</span>()-&gt;lchild);</span><br><span class="line">		<span class="keyword">if</span> (q.<span class="built_in">front</span>()-&gt;rchild)</span><br><span class="line">			q.<span class="built_in">push</span>(q.<span class="built_in">front</span>()-&gt;rchild);</span><br><span class="line">		q.<span class="built_in">pop</span>();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="深度"><a href="#深度" class="headerlink" title="深度"></a>深度</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">depth</span><span class="params">(BiTree T)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (T == <span class="literal">NULL</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		m = <span class="built_in">depth</span>(T-&gt;lchild);</span><br><span class="line">		n = <span class="built_in">depth</span>(T-&gt;rchild);</span><br><span class="line">		<span class="keyword">if</span> (m &gt; n)</span><br><span class="line">			<span class="keyword">return</span> (m + <span class="number">1</span>);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="built_in"><span class="keyword">return</span></span> (n + <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="完整代码如下："><a href="#完整代码如下：" class="headerlink" title="完整代码如下："></a>完整代码如下：</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span> &#123;</span></span><br><span class="line">	<span class="keyword">char</span> data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span> *<span class="title">lchild</span>, *<span class="title">rchild</span>;</span></span><br><span class="line">&#125; BiTNode, *BiTree;</span><br><span class="line"></span><br><span class="line"><span class="function">BiTree <span class="title">CreatBiTree</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	BiTree T;</span><br><span class="line">	<span class="keyword">char</span> c;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%c&quot;</span>, &amp;c);</span><br><span class="line">	<span class="keyword">if</span> (c == <span class="string">&#x27;#&#x27;</span>) &#123;</span><br><span class="line">		T = <span class="literal">NULL</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		T = (BiTree)<span class="built_in">malloc</span>(<span class="built_in"><span class="keyword">sizeof</span></span>(BiTNode));</span><br><span class="line">		T-&gt;data = c;</span><br><span class="line">		T-&gt;lchild = <span class="built_in">CreatBiTree</span>();</span><br><span class="line">		T-&gt;rchild = <span class="built_in">CreatBiTree</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> T;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(<span class="keyword">char</span> data)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%c\n&quot;</span>, data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreOrderTraverse</span><span class="params">(BiTree T)</span> </span>&#123; <span class="comment">//递归</span></span><br><span class="line">	<span class="keyword">if</span> (T) &#123;</span><br><span class="line">		<span class="built_in">visit</span>(T-&gt;data);</span><br><span class="line">		<span class="built_in">PreOrderTraverse</span>(T-&gt;lchild);</span><br><span class="line">		<span class="built_in">PreOrderTraverse</span>(T-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">IreOrderTraverse</span><span class="params">(BiTree T)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (T) &#123;</span><br><span class="line">		<span class="built_in">IreOrderTraverse</span>(T-&gt;lchild);</span><br><span class="line">		<span class="built_in">visit</span>(T-&gt;data);</span><br><span class="line">		<span class="built_in">IreOrderTraverse</span>(T-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LastreOrderTraverse</span><span class="params">(BiTree T)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (T) &#123;</span><br><span class="line">		<span class="built_in">LastreOrderTraverse</span>(T-&gt;lchild);</span><br><span class="line">		<span class="built_in">LastreOrderTraverse</span>(T-&gt;rchild);</span><br><span class="line">		<span class="built_in">visit</span>(T-&gt;data);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//非递归</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fPreOrderTraverse</span><span class="params">(BiTree T)</span> </span>&#123;</span><br><span class="line">	BiTree p;</span><br><span class="line">	BiTree Stack[<span class="number">20</span>];</span><br><span class="line">	p = T;</span><br><span class="line">	<span class="keyword">int</span> top = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span> (p || top != <span class="number">-1</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (p) &#123;</span><br><span class="line">			Stack[++top] = p;</span><br><span class="line">			cout &lt;&lt; p-&gt;data &lt;&lt; endl;</span><br><span class="line">			p = p-&gt;lchild;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			p = Stack[top--];</span><br><span class="line">			p = p-&gt;rchild;;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fIreOrderTraverse</span><span class="params">(BiTree T)</span> </span>&#123;</span><br><span class="line">	BiTree p;</span><br><span class="line">	BiTree Stack[<span class="number">20</span>];</span><br><span class="line">	p = T;</span><br><span class="line">	<span class="keyword">int</span> top = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span> (p || top != <span class="number">-1</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (p) &#123;</span><br><span class="line">			Stack[++top] = p;</span><br><span class="line">			p = p-&gt;lchild;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			p = Stack[top--];</span><br><span class="line">			cout &lt;&lt; p-&gt;data &lt;&lt; endl;</span><br><span class="line">			p = p-&gt;rchild;;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fLastreOrderTraverse</span><span class="params">(BiTree T)</span> </span>&#123;</span><br><span class="line">	BiTree p;</span><br><span class="line">	BiTree Stack[<span class="number">20</span>];</span><br><span class="line">	<span class="keyword">int</span> lStack[<span class="number">20</span>];</span><br><span class="line">	p = T;</span><br><span class="line">	<span class="keyword">int</span> top = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span> (p || top != <span class="number">-1</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (p) &#123;</span><br><span class="line">			Stack[++top] = p;</span><br><span class="line">			lStack[top] = <span class="number">1</span>;</span><br><span class="line">			p = p-&gt;lchild;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (lStack[top] == <span class="number">1</span>) &#123;</span><br><span class="line">				p = Stack[top];</span><br><span class="line">				lStack[top] = <span class="number">2</span>;</span><br><span class="line">				p = p-&gt;rchild;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				p = Stack[top--];</span><br><span class="line">				cout &lt;&lt; p-&gt;data &lt;&lt; endl;</span><br><span class="line">				p = <span class="literal">NULL</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//交换左右子数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rPreOrderTraverse</span><span class="params">(BiTree T)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (T) &#123;</span><br><span class="line">		<span class="built_in">visit</span>(T-&gt;data);</span><br><span class="line">		<span class="built_in">rPreOrderTraverse</span>(T-&gt;rchild);</span><br><span class="line">		<span class="built_in">rPreOrderTraverse</span>(T-&gt;lchild);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rIreOrderTraverse</span><span class="params">(BiTree T)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (T) &#123;</span><br><span class="line">		<span class="built_in">rIreOrderTraverse</span>(T-&gt;rchild);</span><br><span class="line">		<span class="built_in">visit</span>(T-&gt;data);</span><br><span class="line">		<span class="built_in">rIreOrderTraverse</span>(T-&gt;lchild);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rLastreOrderTraverse</span><span class="params">(BiTree T)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (T) &#123;</span><br><span class="line">		<span class="built_in">rLastreOrderTraverse</span>(T-&gt;rchild);</span><br><span class="line">		<span class="built_in">rLastreOrderTraverse</span>(T-&gt;lchild);</span><br><span class="line">		<span class="built_in">visit</span>(T-&gt;data);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> m = <span class="number">0</span>, n = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">depth</span><span class="params">(BiTree T)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (T == <span class="literal">NULL</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		m = <span class="built_in">depth</span>(T-&gt;lchild);</span><br><span class="line">		n = <span class="built_in">depth</span>(T-&gt;rchild);</span><br><span class="line">		<span class="keyword">if</span> (m &gt; n)</span><br><span class="line">			<span class="keyword">return</span> (m + <span class="number">1</span>);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="built_in"><span class="keyword">return</span></span> (n + <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">queue&lt;<span class="keyword">char</span>&gt;p;</span><br><span class="line"></span><br><span class="line"><span class="comment">//节点个数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bitcount</span><span class="params">(BiTree T)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">bitcount</span>(T-&gt;lchild) + <span class="built_in">bitcount</span>(T-&gt;rchild) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//层次遍历</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">load</span><span class="params">(BiTree T)</span> </span>&#123;</span><br><span class="line">	queue&lt;BiTree&gt;q;</span><br><span class="line">	<span class="keyword">if</span> (T)</span><br><span class="line">		q.<span class="built_in">push</span>(T);</span><br><span class="line">	<span class="keyword">while</span> (!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">		cout &lt;&lt; q.<span class="built_in">front</span>()-&gt;data &lt;&lt; endl;</span><br><span class="line">		<span class="keyword">if</span> (q.<span class="built_in">front</span>()-&gt;lchild)</span><br><span class="line">			q.<span class="built_in">push</span>(q.<span class="built_in">front</span>()-&gt;lchild);</span><br><span class="line">		<span class="keyword">if</span> (q.<span class="built_in">front</span>()-&gt;rchild)</span><br><span class="line">			q.<span class="built_in">push</span>(q.<span class="built_in">front</span>()-&gt;rchild);</span><br><span class="line">		q.<span class="built_in">pop</span>();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//FCA##DB###EH##GM###</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	BiTree T;</span><br><span class="line">	T = <span class="built_in">CreatBiTree</span>();</span><br><span class="line">	<span class="built_in">PreOrderTraverse</span>(T);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">	<span class="built_in">IreOrderTraverse</span>(T);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">	<span class="built_in">LastreOrderTraverse</span>(T);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;深度\n&quot;</span>);</span><br><span class="line">	<span class="keyword">int</span> s = <span class="built_in">depth</span>(T);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, s);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;交换左右子树\n&quot;</span>);</span><br><span class="line">	<span class="built_in">rPreOrderTraverse</span>(T);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">	<span class="built_in">rIreOrderTraverse</span>(T);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">	<span class="built_in">rLastreOrderTraverse</span>(T);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;非递归\n&quot;</span>);</span><br><span class="line">	<span class="built_in">fPreOrderTraverse</span>(T);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">	<span class="built_in">fIreOrderTraverse</span>(T);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">	<span class="built_in">fLastreOrderTraverse</span>(T);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;层次遍历\n&quot;</span>);</span><br><span class="line">	<span class="built_in">load</span>(T);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>c++</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>图的bfs与dfs</title>
     <url>/2021/11/26/%E5%9B%BE%E7%9A%84bfs%E4%B8%8Edfs/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MVNum 100					   <span class="comment">//最大顶点数 </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">//边结点</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> adjvex;                       <span class="comment">//顶点的下标</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span> *<span class="title">nextarc</span>;</span>          <span class="comment">//指向下一条边的指针</span></span><br><span class="line">&#125; ArcNode, *Arc;</span><br><span class="line"></span><br><span class="line"><span class="comment">//顶点信息</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">VNode</span> &#123;</span></span><br><span class="line">	<span class="keyword">char</span> data;</span><br><span class="line">	ArcNode *firsttarc;              <span class="comment">//指向第一条依附该顶点的边的指针</span></span><br><span class="line">&#125; VNode, AdjList[MVNum];            <span class="comment">//AdjList表示邻接表类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//邻接表</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ALGraph</span> &#123;</span></span><br><span class="line">	AdjList vertices;</span><br><span class="line">	<span class="keyword">int</span> vexnum, arcnum;             <span class="comment">//总顶点数和总边数</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//顶点v在G.verti00ces中的序号i</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LocateVex</span><span class="params">(ALGraph G, <span class="keyword">char</span> v)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.vexnum; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (v == G.vertices[i].data)</span><br><span class="line">			<span class="keyword">return</span> i;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建有向图 G(邻接表)</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateUDG</span><span class="params">(ALGraph &amp;G)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;请输入总顶点数：&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;G.vexnum);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;请输入总边数：&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;G.arcnum);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> m = <span class="number">0</span>; m &lt; G.vexnum; m++) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;请输入第%d个顶点：&quot;</span>, m + <span class="number">1</span>);</span><br><span class="line">		cin &gt;&gt; G.vertices[m].data;</span><br><span class="line">		G.vertices[m].firsttarc = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; G.arcnum; k++) &#123;</span><br><span class="line">		<span class="keyword">char</span> v1, v2;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;\n请输入第%d条边的起点：&quot;</span>, k + <span class="number">1</span>);</span><br><span class="line">		cin &gt;&gt; v1;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;请输入第%d条边的终点：&quot;</span>, k + <span class="number">1</span>);</span><br><span class="line">		cin &gt;&gt; v2;</span><br><span class="line">		<span class="keyword">int</span> i, j;</span><br><span class="line">		i = <span class="built_in">LocateVex</span>(G, v1);</span><br><span class="line">		j = <span class="built_in">LocateVex</span>(G, v2);</span><br><span class="line">		Arc p1 = <span class="keyword">new</span> ArcNode;                  <span class="comment">//生成一个新的边结点p1</span></span><br><span class="line">		p1-&gt;adjvex = j;                        <span class="comment">//邻接点序号为j</span></span><br><span class="line">		p1-&gt;nextarc = G.vertices[i].firsttarc;</span><br><span class="line">		G.vertices[i].firsttarc = p1;          <span class="comment">//将新结点*p1插入顶点v1的边表头部</span></span><br><span class="line"><span class="comment">//		Arc p2=new ArcNode;                    //生成一个新的边结点p2</span></span><br><span class="line"><span class="comment">//		p2-&gt;adjvex=i;                          //邻接点序号为i</span></span><br><span class="line"><span class="comment">//		p2-&gt;nextarc=G.vertices[j].firsttarc;</span></span><br><span class="line"><span class="comment">//		G.vertices[j].firsttarc=p2;            //将新结点*p2插入顶点v2的边表头部</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//访问标志</span></span><br><span class="line"><span class="keyword">bool</span> visited[MVNum] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//深度优先遍历 (邻接表)</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS_AL</span><span class="params">(ALGraph G, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%c &quot;</span>, G.vertices[v].data);</span><br><span class="line">	visited[v] = <span class="number">1</span>;                     <span class="comment">//访问第v个标志，并将访问标志设置为1</span></span><br><span class="line">	Arc p = <span class="keyword">new</span> ArcNode;</span><br><span class="line">	p = G.vertices[v].firsttarc;        <span class="comment">//p指向v的边链表的第一个边结点</span></span><br><span class="line">	<span class="keyword">while</span> (p != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">int</span> w = p-&gt;adjvex;             <span class="comment">//w是v的邻接点</span></span><br><span class="line">		<span class="keyword">if</span> (!visited[w])</span><br><span class="line">			<span class="built_in">DFS_AL</span>(G, w);              <span class="comment">//如果w为访问，递归调用</span></span><br><span class="line">		p = p-&gt;nextarc;                <span class="comment">//p指向下一个边结点</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXQSIZE 100</span></span><br><span class="line"><span class="comment">//循环队列的存储</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> *base;</span><br><span class="line">	<span class="keyword">int</span> front;      <span class="comment">//头指针</span></span><br><span class="line">	<span class="keyword">int</span> rear;       <span class="comment">//尾指针</span></span><br><span class="line">&#125; SqQueue;</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">InitQueue</span><span class="params">(SqQueue &amp;Q)</span> </span>&#123;</span><br><span class="line">	Q.base = <span class="keyword">new</span> <span class="keyword">int</span>[MAXQSIZE];</span><br><span class="line">	<span class="keyword">if</span> (!Q.base)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	Q.front = Q.rear = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//判空(空为1)</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">QueueEmpty</span><span class="params">(SqQueue Q)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (Q.front == Q.rear)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//入队</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">EnQueue</span><span class="params">(SqQueue &amp;Q, <span class="keyword">int</span> e)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> ((Q.rear + <span class="number">1</span>) % MAXQSIZE == Q.front)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	Q.base[Q.rear] = e;</span><br><span class="line">	Q.rear = (Q.rear + <span class="number">1</span>) % MAXQSIZE;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//出队</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">DeQueue</span><span class="params">(SqQueue &amp;Q, <span class="keyword">int</span> e)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (Q.front == Q.rear)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	e = Q.base[Q.front];</span><br><span class="line">	Q.front = (Q.front + <span class="number">1</span>) % MAXQSIZE;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//取队头元素</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetHead</span><span class="params">(SqQueue Q)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (Q.front != Q.rear)</span><br><span class="line">		<span class="keyword">return</span> Q.base[Q.front];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//访问标志</span></span><br><span class="line"><span class="keyword">bool</span> visited1[MVNum] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//返回u的第一个邻接点下标</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">FirstAdjVex</span><span class="params">(ALGraph G, <span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	ArcNode *p = G.vertices[u].firsttarc;</span><br><span class="line">	<span class="keyword">if</span> (p)</span><br><span class="line">		<span class="keyword">return</span> p-&gt;adjvex;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//返回顶点u的相对于w的下一个邻接点序号</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">NextAdjVex</span><span class="params">(ALGraph G, <span class="keyword">int</span> u, <span class="keyword">int</span> w)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	ArcNode *p = G.vertices[u].firsttarc;</span><br><span class="line">	<span class="keyword">while</span> (p) &#123;</span><br><span class="line">		<span class="keyword">if</span> (p-&gt;adjvex == w)</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		p = p-&gt;nextarc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (p-&gt;adjvex != w || !p-&gt;nextarc)       <span class="comment">//如果没找到w或者w是最后一个邻接点</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">return</span> p-&gt;nextarc-&gt;adjvex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//广度优先遍历 (邻接表)</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFS_AL</span><span class="params">(ALGraph G, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%c &quot;</span>, G.vertices[v].data);</span><br><span class="line">	visited1[v] = <span class="number">1</span>;</span><br><span class="line">	SqQueue Q;</span><br><span class="line">	<span class="built_in">InitQueue</span>(Q);</span><br><span class="line">	<span class="built_in">EnQueue</span>(Q, v);</span><br><span class="line">	<span class="keyword">while</span> (!<span class="built_in">QueueEmpty</span>(Q)) &#123;</span><br><span class="line">		<span class="keyword">int</span> u = <span class="built_in">GetHead</span>(Q);</span><br><span class="line">		<span class="built_in">DeQueue</span>(Q, u);</span><br><span class="line">		<span class="keyword">int</span> w;</span><br><span class="line">		<span class="keyword">for</span> (w = <span class="built_in">FirstAdjVex</span>(G, u); w &gt;= <span class="number">0</span>; w = <span class="built_in">NextAdjVex</span>(G, u, w)) &#123;</span><br><span class="line">			<span class="keyword">if</span> (!visited1[w]) &#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">&quot;%c &quot;</span>, G.vertices[w].data);</span><br><span class="line">				visited1[w] = <span class="number">1</span>;</span><br><span class="line">				<span class="built_in">EnQueue</span>(Q, w);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//链栈的存储</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">StackNode</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">StackNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125; StackNode, *linkStack;</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InitLinkStack</span><span class="params">(linkStack &amp;S)</span> </span>&#123;</span><br><span class="line">	S = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//判空(空为1)</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isEmpty</span><span class="params">(linkStack &amp;S)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (S == <span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//入栈</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Push</span><span class="params">(linkStack &amp;S, <span class="keyword">int</span> e)</span> </span>&#123;</span><br><span class="line">	linkStack p = <span class="keyword">new</span> StackNode[<span class="number">1</span>];</span><br><span class="line">	p-&gt;data = e;</span><br><span class="line">	p-&gt;next = S;</span><br><span class="line">	S = p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//出栈</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Pop</span><span class="params">(linkStack &amp;S, <span class="keyword">int</span> &amp;e)</span> </span>&#123;</span><br><span class="line">	linkStack p;</span><br><span class="line">	e = S-&gt;data;</span><br><span class="line">	p = S;</span><br><span class="line">	S = S-&gt;next;</span><br><span class="line">	<span class="keyword">delete</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//取栈顶元素</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetTop</span><span class="params">(linkStack &amp;S)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> S-&gt;data ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//求每个结点的入度并存入数组indegree 中</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FindinDegree</span><span class="params">(ALGraph G, <span class="keyword">int</span> indegree[])</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.vexnum; i++)</span><br><span class="line">		indegree[i] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; G.vexnum; j++) &#123;</span><br><span class="line">		ArcNode *p = G.vertices[j].firsttarc;</span><br><span class="line">		<span class="keyword">while</span> (p) &#123;</span><br><span class="line">			indegree[p-&gt;adjvex]++;</span><br><span class="line">			p = p-&gt;nextarc;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ALGraph G;</span><br><span class="line">	<span class="built_in">CreateUDG</span>(G);</span><br><span class="line">	<span class="keyword">char</span> s;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n请输入遍历的起点：&quot;</span>);</span><br><span class="line">	cin &gt;&gt; s;</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.vexnum; i++)</span><br><span class="line">		<span class="keyword">if</span> (s == G.vertices[i].data)</span><br><span class="line">			t = i;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n深度优先遍历：&quot;</span>);</span><br><span class="line">	<span class="built_in">DFS_AL</span>(G, t);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n广度优先遍历：&quot;</span>);</span><br><span class="line">	<span class="built_in">BFS_AL</span>(G, t);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;stdio.h&gt;
+#include &lt;iostream&gt;
+#include &lt;string.h&gt;
+#include &lt;algorithm&gt;
+#define MVNum 100					   &#x2F;&#x2F;最大顶点数 
+using namespace std;
+
+&#x2F;&#x2F;边结点
+typedef struct ArcNode &#123;
+	int adjvex;                       &#x2F;&#x2F;顶点的下标
+	struct ArcNode *nextarc;          &#x2F;&#x2F;指向下一条边的指针
+&#125; ArcNode, *Arc;
+
+&#x2F;&#x2F;顶点信息
+typedef struct VNode &#123;
+	char data;
+	ArcNode *firsttarc;              &#x2F;&#x2F;指向第一条依附该顶点的边的指针
+&#125; VNode, AdjList[MVNum];            &#x2F;&#x2F;AdjList表示邻接表类型
+
+&#x2F;&#x2F;邻接表
+struct ALGraph &#123;
+	AdjList vertices;
+	int vexnum, arcnum;             &#x2F;&#x2F;总顶点数和总边数
+&#125;;
+
+&#x2F;&#x2F;顶点v在G.verti00ces中的序号i
+int LocateVex(ALGraph G, char v) &#123;
+	for (int i &#x3D; 0; i &lt; G.vexnum; i++) &#123;
+		if (v &#x3D;&#x3D; G.vertices[i].data)
+			return i;
+	&#125;
+&#125;
+
+&#x2F;&#x2F;创建有向图 G(邻接表)
+void CreateUDG(ALGraph &amp;G) &#123;
+	printf(&quot;请输入总顶点数：&quot;);
+	scanf(&quot;%d&quot;, &amp;G.vexnum);
+	printf(&quot;请输入总边数：&quot;);
+	scanf(&quot;%d&quot;, &amp;G.arcnum);
+	printf(&quot;\n&quot;);
+	for (int m &#x3D; 0; m &lt; G.vexnum; m++) &#123;
+		printf(&quot;请输入第%d个顶点：&quot;, m + 1);
+		cin &gt;&gt; G.vertices[m].data;
+		G.vertices[m].firsttarc &#x3D; 0;
+	&#125;
+	for (int k &#x3D; 0; k &lt; G.arcnum; k++) &#123;
+		char v1, v2;
+		printf(&quot;\n请输入第%d条边的起点：&quot;, k + 1);
+		cin &gt;&gt; v1;
+		printf(&quot;请输入第%d条边的终点：&quot;, k + 1);
+		cin &gt;&gt; v2;
+		int i, j;
+		i &#x3D; LocateVex(G, v1);
+		j &#x3D; LocateVex(G, v2);
+		Arc p1 &#x3D; new ArcNode;                  &#x2F;&#x2F;生成一个新的边结点p1
+		p1-&gt;adjvex &#x3D; j;                        &#x2F;&#x2F;邻接点序号为j
+		p1-&gt;nextarc &#x3D; G.vertices[i].firsttarc;
+		G.vertices[i].firsttarc &#x3D; p1;          &#x2F;&#x2F;将新结点*p1插入顶点v1的边表头部
+&#x2F;&#x2F;		Arc p2&#x3D;new ArcNode;                    &#x2F;&#x2F;生成一个新的边结点p2
+&#x2F;&#x2F;		p2-&gt;adjvex&#x3D;i;                          &#x2F;&#x2F;邻接点序号为i
+&#x2F;&#x2F;		p2-&gt;nextarc&#x3D;G.vertices[j].firsttarc;
+&#x2F;&#x2F;		G.vertices[j].firsttarc&#x3D;p2;            &#x2F;&#x2F;将新结点*p2插入顶点v2的边表头部
+	&#125;
+&#125;
+
+&#x2F;&#x2F;访问标志
+bool visited[MVNum] &#x3D; &#123;0&#125;;
+
+&#x2F;&#x2F;深度优先遍历 (邻接表)
+void DFS_AL(ALGraph G, int v) &#123;
+	printf(&quot;%c &quot;, G.vertices[v].data);
+	visited[v] &#x3D; 1;                     &#x2F;&#x2F;访问第v个标志，并将访问标志设置为1
+	Arc p &#x3D; new ArcNode;
+	p &#x3D; G.vertices[v].firsttarc;        &#x2F;&#x2F;p指向v的边链表的第一个边结点
+	while (p !&#x3D; 0) &#123;
+		int w &#x3D; p-&gt;adjvex;             &#x2F;&#x2F;w是v的邻接点
+		if (!visited[w])
+			DFS_AL(G, w);              &#x2F;&#x2F;如果w为访问，递归调用
+		p &#x3D; p-&gt;nextarc;                &#x2F;&#x2F;p指向下一个边结点
+	&#125;
+&#125;
+
+#define MAXQSIZE 100
+&#x2F;&#x2F;循环队列的存储
+typedef struct &#123;
+	int *base;
+	int front;      &#x2F;&#x2F;头指针
+	int rear;       &#x2F;&#x2F;尾指针
+&#125; SqQueue;
+
+&#x2F;&#x2F;初始化
+int InitQueue(SqQueue &amp;Q) &#123;
+	Q.base &#x3D; new int[MAXQSIZE];
+	if (!Q.base)
+		return 0;
+	Q.front &#x3D; Q.rear &#x3D; 0;
+	return 1;
+&#125;
+
+&#x2F;&#x2F;判空(空为1)
+int QueueEmpty(SqQueue Q) &#123;
+	if (Q.front &#x3D;&#x3D; Q.rear)
+		return 1;
+	return 0;
+&#125;
+
+&#x2F;&#x2F;入队
+int EnQueue(SqQueue &amp;Q, int e) &#123;
+	if ((Q.rear + 1) % MAXQSIZE &#x3D;&#x3D; Q.front)
+		return 0;
+	Q.base[Q.rear] &#x3D; e;
+	Q.rear &#x3D; (Q.rear + 1) % MAXQSIZE;
+	return 1;
+&#125;
+
+&#x2F;&#x2F;出队
+int DeQueue(SqQueue &amp;Q, int e) &#123;
+	if (Q.front &#x3D;&#x3D; Q.rear)
+		return 0;
+	e &#x3D; Q.base[Q.front];
+	Q.front &#x3D; (Q.front + 1) % MAXQSIZE;
+	return 1;
+&#125;
+
+&#x2F;&#x2F;取队头元素
+int GetHead(SqQueue Q) &#123;
+	if (Q.front !&#x3D; Q.rear)
+		return Q.base[Q.front];
+&#125;
+
+&#x2F;&#x2F;访问标志
+bool visited1[MVNum] &#x3D; &#123;0&#125;;
+
+&#x2F;&#x2F;返回u的第一个邻接点下标
+int FirstAdjVex(ALGraph G, int u) &#123;
+
+	ArcNode *p &#x3D; G.vertices[u].firsttarc;
+	if (p)
+		return p-&gt;adjvex;
+	else
+		return -1;
+&#125;
+
+&#x2F;&#x2F;返回顶点u的相对于w的下一个邻接点序号
+int NextAdjVex(ALGraph G, int u, int w) &#123;
+
+	ArcNode *p &#x3D; G.vertices[u].firsttarc;
+	while (p) &#123;
+		if (p-&gt;adjvex &#x3D;&#x3D; w)
+			break;
+		p &#x3D; p-&gt;nextarc;
+	&#125;
+	if (p-&gt;adjvex !&#x3D; w || !p-&gt;nextarc)       &#x2F;&#x2F;如果没找到w或者w是最后一个邻接点
+		return -1;
+	return p-&gt;nextarc-&gt;adjvex;
+&#125;
+
+&#x2F;&#x2F;广度优先遍历 (邻接表)
+void BFS_AL(ALGraph G, int v) &#123;
+	printf(&quot;%c &quot;, G.vertices[v].data);
+	visited1[v] &#x3D; 1;
+	SqQueue Q;
+	InitQueue(Q);
+	EnQueue(Q, v);
+	while (!QueueEmpty(Q)) &#123;
+		int u &#x3D; GetHead(Q);
+		DeQueue(Q, u);
+		int w;
+		for (w &#x3D; FirstAdjVex(G, u); w &gt;&#x3D; 0; w &#x3D; NextAdjVex(G, u, w)) &#123;
+			if (!visited1[w]) &#123;
+				printf(&quot;%c &quot;, G.vertices[w].data);
+				visited1[w] &#x3D; 1;
+				EnQueue(Q, w);
+			&#125;
+		&#125;
+	&#125;
+&#125;
+
+
+
+&#x2F;&#x2F;链栈的存储
+typedef struct StackNode &#123;
+	int data;
+	struct StackNode *next;
+&#125; StackNode, *linkStack;
+
+&#x2F;&#x2F;初始化
+void InitLinkStack(linkStack &amp;S) &#123;
+	S &#x3D; 0;
+&#125;
+
+&#x2F;&#x2F;判空(空为1)
+int isEmpty(linkStack &amp;S) &#123;
+	if (S &#x3D;&#x3D; 0)
+		return 1;
+	else
+		return 0;
+&#125;
+
+&#x2F;&#x2F;入栈
+void Push(linkStack &amp;S, int e) &#123;
+	linkStack p &#x3D; new StackNode[1];
+	p-&gt;data &#x3D; e;
+	p-&gt;next &#x3D; S;
+	S &#x3D; p;
+&#125;
+
+&#x2F;&#x2F;出栈
+void Pop(linkStack &amp;S, int &amp;e) &#123;
+	linkStack p;
+	e &#x3D; S-&gt;data;
+	p &#x3D; S;
+	S &#x3D; S-&gt;next;
+	delete p;
+&#125;
+
+&#x2F;&#x2F;取栈顶元素
+int GetTop(linkStack &amp;S) &#123;
+	return S-&gt;data ;
+&#125;
+
+&#x2F;&#x2F;求每个结点的入度并存入数组indegree 中
+void FindinDegree(ALGraph G, int indegree[]) &#123;
+	for (int i &#x3D; 0; i &lt; G.vexnum; i++)
+		indegree[i] &#x3D; 0;
+	for (int j &#x3D; 0; j &lt; G.vexnum; j++) &#123;
+		ArcNode *p &#x3D; G.vertices[j].firsttarc;
+		while (p) &#123;
+			indegree[p-&gt;adjvex]++;
+			p &#x3D; p-&gt;nextarc;
+		&#125;
+	&#125;
+&#125;
+
+int main() &#123;
+	ALGraph G;
+	CreateUDG(G);
+	char s;
+	printf(&quot;\n请输入遍历的起点：&quot;);
+	cin &gt;&gt; s;
+	int t;
+	for (int i &#x3D; 0; i &lt; G.vexnum; i++)
+		if (s &#x3D;&#x3D; G.vertices[i].data)
+			t &#x3D; i;
+	printf(&quot;\n深度优先遍历：&quot;);
+	DFS_AL(G, t);
+	printf(&quot;\n广度优先遍历：&quot;);
+	BFS_AL(G, t);
+	return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 ]]></content>
       <categories>
@@ -58,10 +267,347 @@
       </tags>
   </entry>
   <entry>
+    <title>二叉树</title>
+    <url>/2021/11/22/%E4%BA%8C%E5%8F%89%E6%A0%91/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="通过递归方法实现以先序创建树"><a href="#通过递归方法实现以先序创建树" class="headerlink" title="通过递归方法实现以先序创建树"></a>通过递归方法实现以先序创建树</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">BiTree CreatBiTree() &#123;
+	BiTree T;
+	char c;
+	scanf(&quot;%c&quot;, &amp;c);
+	if (c &#x3D;&#x3D; &#39;#&#39;) &#123;
+		T &#x3D; NULL;
+	&#125; else &#123;
+		T &#x3D; (BiTree)malloc(sizeof(BiTNode));
+		T-&gt;data &#x3D; c;
+		T-&gt;lchild &#x3D; CreatBiTree();
+		T-&gt;rchild &#x3D; CreatBiTree();
+	&#125;
+	return T;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/2021/11/22/%E4%BA%8C%E5%8F%89%E6%A0%91/xian.png" class title="This is an example image">
+
+<h4 id="先序遍历"><a href="#先序遍历" class="headerlink" title="先序遍历"></a>先序遍历</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void PreOrderTraverse(BiTree T) &#123; &#x2F;&#x2F;递归
+	if (T) &#123;
+		visit(T-&gt;data);
+		PreOrderTraverse(T-&gt;lchild);
+		PreOrderTraverse(T-&gt;rchild);
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void IreOrderTraverse(BiTree T) &#123;
+	if (T) &#123;
+		IreOrderTraverse(T-&gt;lchild);
+		visit(T-&gt;data);
+		IreOrderTraverse(T-&gt;rchild);
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<img src="/2021/11/22/%E4%BA%8C%E5%8F%89%E6%A0%91/huo.png" class title="This is an example image">
+
+<h4 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void LastreOrderTraverse(BiTree T) &#123;
+	if (T) &#123;
+		LastreOrderTraverse(T-&gt;lchild);
+		LastreOrderTraverse(T-&gt;rchild);
+		visit(T-&gt;data);
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="层次遍历"><a href="#层次遍历" class="headerlink" title="层次遍历"></a>层次遍历</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void load(BiTree T) &#123;
+	queue&lt;BiTree&gt;q;
+	if (T)
+		q.push(T);
+	while (!q.empty()) &#123;
+		cout &lt;&lt; q.front()-&gt;data &lt;&lt; endl;
+		if (q.front()-&gt;lchild)
+			q.push(q.front()-&gt;lchild);
+		if (q.front()-&gt;rchild)
+			q.push(q.front()-&gt;rchild);
+		q.pop();
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="深度"><a href="#深度" class="headerlink" title="深度"></a>深度</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int depth(BiTree T) &#123;
+	if (T &#x3D;&#x3D; NULL)
+		return 0;
+	else &#123;
+		m &#x3D; depth(T-&gt;lchild);
+		n &#x3D; depth(T-&gt;rchild);
+		if (m &gt; n)
+			return (m + 1);
+		else
+			return (n + 1);
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="完整代码如下："><a href="#完整代码如下：" class="headerlink" title="完整代码如下："></a>完整代码如下：</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;stdio.h&gt;
+#include &lt;queue&gt;
+#include &lt;stdlib.h&gt;
+using namespace std;
+
+typedef struct BiTNode &#123;
+	char data;
+	struct BiTNode *lchild, *rchild;
+&#125; BiTNode, *BiTree;
+
+BiTree CreatBiTree() &#123;
+	BiTree T;
+	char c;
+	scanf(&quot;%c&quot;, &amp;c);
+	if (c &#x3D;&#x3D; &#39;#&#39;) &#123;
+		T &#x3D; NULL;
+	&#125; else &#123;
+		T &#x3D; (BiTree)malloc(sizeof(BiTNode));
+		T-&gt;data &#x3D; c;
+		T-&gt;lchild &#x3D; CreatBiTree();
+		T-&gt;rchild &#x3D; CreatBiTree();
+	&#125;
+	return T;
+&#125;
+
+void visit(char data) &#123;
+	printf(&quot;%c\n&quot;, data);
+&#125;
+
+void PreOrderTraverse(BiTree T) &#123; &#x2F;&#x2F;递归
+	if (T) &#123;
+		visit(T-&gt;data);
+		PreOrderTraverse(T-&gt;lchild);
+		PreOrderTraverse(T-&gt;rchild);
+	&#125;
+&#125;
+
+void IreOrderTraverse(BiTree T) &#123;
+	if (T) &#123;
+		IreOrderTraverse(T-&gt;lchild);
+		visit(T-&gt;data);
+		IreOrderTraverse(T-&gt;rchild);
+	&#125;
+&#125;
+
+void LastreOrderTraverse(BiTree T) &#123;
+	if (T) &#123;
+		LastreOrderTraverse(T-&gt;lchild);
+		LastreOrderTraverse(T-&gt;rchild);
+		visit(T-&gt;data);
+	&#125;
+&#125;
+
+&#x2F;&#x2F;非递归
+void fPreOrderTraverse(BiTree T) &#123;
+	BiTree p;
+	BiTree Stack[20];
+	p &#x3D; T;
+	int top &#x3D; -1;
+	while (p || top !&#x3D; -1) &#123;
+		if (p) &#123;
+			Stack[++top] &#x3D; p;
+			cout &lt;&lt; p-&gt;data &lt;&lt; endl;
+			p &#x3D; p-&gt;lchild;
+		&#125; else &#123;
+			p &#x3D; Stack[top--];
+			p &#x3D; p-&gt;rchild;;
+		&#125;
+	&#125;
+&#125;
+
+void fIreOrderTraverse(BiTree T) &#123;
+	BiTree p;
+	BiTree Stack[20];
+	p &#x3D; T;
+	int top &#x3D; -1;
+	while (p || top !&#x3D; -1) &#123;
+		if (p) &#123;
+			Stack[++top] &#x3D; p;
+			p &#x3D; p-&gt;lchild;
+		&#125; else &#123;
+			p &#x3D; Stack[top--];
+			cout &lt;&lt; p-&gt;data &lt;&lt; endl;
+			p &#x3D; p-&gt;rchild;;
+		&#125;
+	&#125;
+&#125;
+
+void fLastreOrderTraverse(BiTree T) &#123;
+	BiTree p;
+	BiTree Stack[20];
+	int lStack[20];
+	p &#x3D; T;
+	int top &#x3D; -1;
+	while (p || top !&#x3D; -1) &#123;
+		if (p) &#123;
+			Stack[++top] &#x3D; p;
+			lStack[top] &#x3D; 1;
+			p &#x3D; p-&gt;lchild;
+		&#125; else &#123;
+			if (lStack[top] &#x3D;&#x3D; 1) &#123;
+				p &#x3D; Stack[top];
+				lStack[top] &#x3D; 2;
+				p &#x3D; p-&gt;rchild;
+			&#125; else &#123;
+				p &#x3D; Stack[top--];
+				cout &lt;&lt; p-&gt;data &lt;&lt; endl;
+				p &#x3D; NULL;
+			&#125;
+		&#125;
+	&#125;
+&#125;
+
+&#x2F;&#x2F;交换左右子数
+void rPreOrderTraverse(BiTree T) &#123;
+	if (T) &#123;
+		visit(T-&gt;data);
+		rPreOrderTraverse(T-&gt;rchild);
+		rPreOrderTraverse(T-&gt;lchild);
+	&#125;
+&#125;
+
+void rIreOrderTraverse(BiTree T) &#123;
+	if (T) &#123;
+		rIreOrderTraverse(T-&gt;rchild);
+		visit(T-&gt;data);
+		rIreOrderTraverse(T-&gt;lchild);
+	&#125;
+&#125;
+
+void rLastreOrderTraverse(BiTree T) &#123;
+	if (T) &#123;
+		rLastreOrderTraverse(T-&gt;rchild);
+		rLastreOrderTraverse(T-&gt;lchild);
+		visit(T-&gt;data);
+	&#125;
+&#125;
+int m &#x3D; 0, n &#x3D; 0;
+
+int depth(BiTree T) &#123;
+	if (T &#x3D;&#x3D; NULL)
+		return 0;
+	else &#123;
+		m &#x3D; depth(T-&gt;lchild);
+		n &#x3D; depth(T-&gt;rchild);
+		if (m &gt; n)
+			return (m + 1);
+		else
+			return (n + 1);
+	&#125;
+&#125;
+queue&lt;char&gt;p;
+
+&#x2F;&#x2F;节点个数
+int bitcount(BiTree T) &#123;
+	return bitcount(T-&gt;lchild) + bitcount(T-&gt;rchild) + 1;
+&#125;
+
+&#x2F;&#x2F;层次遍历
+void load(BiTree T) &#123;
+	queue&lt;BiTree&gt;q;
+	if (T)
+		q.push(T);
+	while (!q.empty()) &#123;
+		cout &lt;&lt; q.front()-&gt;data &lt;&lt; endl;
+		if (q.front()-&gt;lchild)
+			q.push(q.front()-&gt;lchild);
+		if (q.front()-&gt;rchild)
+			q.push(q.front()-&gt;rchild);
+		q.pop();
+	&#125;
+&#125;
+
+&#x2F;&#x2F;FCA##DB###EH##GM###
+int main() &#123;
+	BiTree T;
+	T &#x3D; CreatBiTree();
+	PreOrderTraverse(T);
+	printf(&quot;\n&quot;);
+	IreOrderTraverse(T);
+	printf(&quot;\n&quot;);
+	LastreOrderTraverse(T);
+	printf(&quot;深度\n&quot;);
+	int s &#x3D; depth(T);
+	printf(&quot;%d&quot;, s);
+	printf(&quot;\n&quot;);
+	printf(&quot;交换左右子树\n&quot;);
+	rPreOrderTraverse(T);
+	printf(&quot;\n&quot;);
+	rIreOrderTraverse(T);
+	printf(&quot;\n&quot;);
+	rLastreOrderTraverse(T);
+	printf(&quot;非递归\n&quot;);
+	fPreOrderTraverse(T);
+	printf(&quot;\n&quot;);
+	fIreOrderTraverse(T);
+	printf(&quot;\n&quot;);
+	fLastreOrderTraverse(T);
+	printf(&quot;层次遍历\n&quot;);
+	load(T);
+	return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      <categories>
+        <category>c++</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>高精度加减</title>
     <url>/2021/11/21/%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%8A%A0%E6%B3%95/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>因为int变量类型最大只能存2<sup>32</sup>-1个数,所以用数组来代替存储，把一个大数一位一位存入数组中，并进行相应的运算。</p>
-<h2 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pi 3.1415</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll N=<span class="number">300100</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">char</span> a[N];</span><br><span class="line"><span class="keyword">char</span> b[N];</span><br><span class="line">ll c[N];</span><br><span class="line">ll d[N];</span><br><span class="line">ll e[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%s%s&quot;</span>,a,b);<span class="comment">//以字符串形式输入数据</span></span><br><span class="line">	ll few=<span class="number">0</span>;</span><br><span class="line">	ll len1=<span class="built_in">strlen</span>(a);</span><br><span class="line">	ll len2=<span class="built_in">strlen</span>(b);</span><br><span class="line">	<span class="keyword">for</span>(ll i=<span class="number">0</span>;i&lt;len1;i++)<span class="comment">//转化为整形</span></span><br><span class="line">	&#123;</span><br><span class="line">		c[i]=a[len1<span class="number">-1</span>-i]-<span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(ll i=<span class="number">0</span>;i&lt;len2;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		d[i]=b[len2<span class="number">-1</span>-i]-<span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	ll len=<span class="built_in">max</span>(len1,len2)+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(ll i=<span class="number">0</span>;i&lt;len;i++)<span class="comment">//解决进位问题</span></span><br><span class="line">	&#123;</span><br><span class="line">		e[i]=c[i]+d[i]+few;</span><br><span class="line">		few=e[i]/<span class="number">10</span>;</span><br><span class="line">		e[i]%=<span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(ll i=len<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(e[i]==<span class="number">0</span>&amp;&amp;len&gt;<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			len--;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(ll i=len<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,e[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> &#125; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h2><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+#include&lt;set&gt;
+#include&lt;cstring&gt;
+#include&lt;vector&gt;
+#define pi 3.1415
+using namespace std;
+typedef long long ll;
+const ll N&#x3D;300100;
+const int mod&#x3D;1e9+7;
+char a[N];
+char b[N];
+ll c[N];
+ll d[N];
+ll e[N];
+int main()
+&#123;
+	scanf(&quot;%s%s&quot;,a,b);&#x2F;&#x2F;以字符串形式输入数据
+	ll few&#x3D;0;
+	ll len1&#x3D;strlen(a);
+	ll len2&#x3D;strlen(b);
+	for(ll i&#x3D;0;i&lt;len1;i++)&#x2F;&#x2F;转化为整形
+	&#123;
+		c[i]&#x3D;a[len1-1-i]-&#39;0&#39;;
+	&#125;
+	for(ll i&#x3D;0;i&lt;len2;i++)
+	&#123;
+		d[i]&#x3D;b[len2-1-i]-&#39;0&#39;;
+	&#125;
+	ll len&#x3D;max(len1,len2)+1;
+	for(ll i&#x3D;0;i&lt;len;i++)&#x2F;&#x2F;解决进位问题
+	&#123;
+		e[i]&#x3D;c[i]+d[i]+few;
+		few&#x3D;e[i]&#x2F;10;
+		e[i]%&#x3D;10;
+	&#125;
+	for(ll i&#x3D;len-1;i&gt;&#x3D;0;i--)
+	&#123;
+		if(e[i]&#x3D;&#x3D;0&amp;&amp;len&gt;1)
+		&#123;
+			len--;
+		&#125;
+		else
+		&#123;
+			break;
+		&#125;
+	&#125;
+	for(ll i&#x3D;len-1;i&gt;&#x3D;0;i--)
+	&#123;
+		printf(&quot;%d&quot;,e[i]);
+	&#125;
+	return 0;
+ &#125; 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="练习的题目"><a href="#练习的题目" class="headerlink" title="练习的题目:"></a>练习的题目:</h3><p>&lt;<a href="https://acm.hdu.edu.cn/showproblem.php?pid=1000">Problem - 1000 (hdu.edu.cn)</a>&gt;</p>
 ]]></content>
@@ -72,5 +618,23 @@
         <tag>算法</tag>
         <tag>入门</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/11/19/hello-world/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
 </search>
